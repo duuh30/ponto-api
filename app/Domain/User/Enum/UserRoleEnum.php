@@ -15,8 +15,8 @@ enum UserRoleEnum: int
     public function label(): string
     {
         return match($this->value) {
-            self::MANAGER->value => 'Manager',
-            self::EMPLOYEE->value => 'Employee',
+            self::MANAGER->value => 'manager',
+            self::EMPLOYEE->value => 'employee',
         };
     }
 }
