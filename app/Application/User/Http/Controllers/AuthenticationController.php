@@ -4,12 +4,13 @@ namespace App\Application\User\Http\Controllers;
 
 use App\Application\User\Http\Requests\AuthenticateRequest;
 use App\Application\User\Http\Resources\AuthenticateResource;
+use App\Support\Laravel\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
-class AuthenticationController
+class AuthenticationController extends Controller
 {
     /**
      * @param AuthenticateRequest $request

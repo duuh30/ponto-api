@@ -7,8 +7,9 @@ use App\Application\User\Http\Resources\UserResource;
 use App\Domain\Address\Exceptions\AddressSearchException;
 use App\Domain\User\Actions\CreateUserAction;
 use App\Domain\User\DTO\UserCreateDto;
+use App\Support\Laravel\Http\Controllers\Controller;
 
-class UserController
+class UserController extends Controller
 {
     /**
      * @param StoreUserRequest $request
