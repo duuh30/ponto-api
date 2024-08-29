@@ -7,8 +7,10 @@ use App\Application\User\Http\Resources\UserResource;
 use App\Domain\Address\Exceptions\AddressSearchException;
 use App\Domain\User\Actions\CreateUserAction;
 use App\Domain\User\DTO\UserCreateDto;
+use App\Support\Laravel\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
-class UserController
+class UserController extends Controller
 {
     /**
      * @param StoreUserRequest $request
@@ -19,6 +21,7 @@ class UserController
     public function store(StoreUserRequest $request, CreateUserAction $createUserAction): UserResource
     {
         $user = $createUserAction->execute(
+            manager: Auth::user(),
             userDto: UserCreateDto::fromRequest($request),
         );
 

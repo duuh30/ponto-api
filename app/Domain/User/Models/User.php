@@ -2,8 +2,11 @@
 
 namespace App\Domain\User\Models;
 
+use App\Domain\User\Concerns\BelongsToManager;
 use App\Domain\User\Concerns\BelongsToRole;
 use App\Domain\User\Concerns\HasAddress;
+use App\Domain\User\Concerns\HasManyAttendances;
+use App\Domain\User\Concerns\HasManyEmployees;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -15,7 +18,10 @@ class User extends Authenticatable
         Notifiable,
         BelongsToRole,
         HasAddress,
-        HasApiTokens;
+        HasApiTokens,
+        HasManyAttendances,
+        BelongsToManager,
+        HasManyEmployees;
 
     /**
      * The attributes that are mass assignable.
@@ -24,6 +30,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'role_id',
+        'manager_id',
         'name',
         'email',
         'password',
