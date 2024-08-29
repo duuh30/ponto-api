@@ -17,18 +17,22 @@ readonly class CreateUserAction
     /**
      * Execute the User Creation Business Logic
      *
+     * @param User $manager
      * @param UserCreateDto $userDto
      * @return User
      * @throws AddressSearchException
      */
-    public function execute(UserCreateDto $userDto): User
+    public function execute(User $manager, UserCreateDto $userDto): User
     {
         $addressData = $this->addressService->searchByZipCode(
             zipCode: $userDto->getZipCode()
         );
 
-        return DB::transaction(function () use ($userDto, $addressData) {
-            $user = User::query()->create($userDto->toArray());
+        return DB::transaction(function () use ($manager, $userDto, $addressData) {
+            /**
+             * @var User $user
+             */
+            $user = $manager->employees()->create($userDto->toArray());
             $user->address()->create($addressData->toArray());
 
             return $user->load('address');
