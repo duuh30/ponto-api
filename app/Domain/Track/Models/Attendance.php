@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Attendance extends Model
 {
-    use BelongsToUser, SoftDeletes;
+    use SoftDeletes,
+        BelongsToUser;
 
     /**
      * The attributes that are mass assignable.

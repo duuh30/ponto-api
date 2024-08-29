@@ -4,10 +4,12 @@ namespace App\Domain\Address\Models;
 
 use App\Support\Core\Concerns\BelongsToUser;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Address extends Model
 {
-    use BelongsToUser;
+    use SoftDeletes,
+        BelongsToUser;
 
     protected $table = "user_address";
 

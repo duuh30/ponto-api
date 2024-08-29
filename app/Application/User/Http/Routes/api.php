@@ -9,6 +9,7 @@ Route::prefix('api')->group(function () {
         Route::prefix('users')->group(function () {
             Route::get('/', [UserController::class, 'employees']);
             Route::post('/', [UserController::class, 'store']);
+            Route::delete('{id}', [UserController::class, 'destroyEmployee']);
         });
     });
 
