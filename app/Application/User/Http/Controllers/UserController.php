@@ -9,11 +9,18 @@ use App\Domain\User\Actions\CreateUserAction;
 use App\Domain\User\Actions\EmployeeListAction;
 use App\Domain\User\DTO\UserCreateDto;
 use App\Support\Laravel\Http\Controllers\Controller;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function employees(EmployeeListAction $employeeListAction)
+    /**
+     * Returns all the employees
+     *
+     * @param EmployeeListAction $employeeListAction
+     * @return JsonResource
+     */
+    public function employees(EmployeeListAction $employeeListAction): JsonResource
     {
         $employees = $employeeListAction->execute();
 
@@ -21,6 +28,8 @@ class UserController extends Controller
     }
 
     /**
+     * Store employee
+     *
      * @param StoreUserRequest $request
      * @param CreateUserAction $createUserAction
      * @return UserResource
