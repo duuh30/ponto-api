@@ -8,5 +8,9 @@ Route::prefix('api')->group(function () {
         Route::middleware(['auth:sanctum', 'ability:role:employee'])->group(function () {
             Route::post('attendances', [TrackController::class, 'attendance']);
         });
+
+        Route::middleware(['auth:sanctum', 'ability:role:manager'])->group(function () {
+            Route::get('attendances', [TrackController::class, 'attendances']);
+        });
     });
 });
